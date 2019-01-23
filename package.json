@@ -1,0 +1,48 @@
+{
+  "name": "LBD_reactCreditCard",
+  "version": "1.0.0",
+  "description": "Learn by Doing - React Credit Card Component!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --content-base src --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecodeduck/LBD_reactCreditCard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thecodeduck/LBD_reactCreditCard/issues"
+  },
+  "homepage": "https://github.com/thecodeduck/LBD_reactCreditCard#readme",
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "babel-plugin-transform-class-properties": "^6.3.13",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "webpack": "3.10.0",
+    "webpack-cli": "2.0.10",
+    "webpack-dev-server": "2.9.7"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
