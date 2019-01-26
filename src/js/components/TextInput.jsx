@@ -12,6 +12,7 @@ class ControlledTextInput extends React.Component {
 	}
 
 	onChangeWrapper(evt) {
+		console.log('ControlledTextInput.onChangeWrapper', evt.target.value, evt.target.name);
 		const { onChange } = this.props;
 		onChange(evt.target.value, evt.target.name);
 	}
@@ -24,19 +25,24 @@ class ControlledTextInput extends React.Component {
 			disabled,
 			valid,
 			onChange,
+			size,
+			maxlength,
 		} = this.props;
 
 		return (
 			<div>
+				<label htmlFor={this.state.htmlID}>{label}</label>
 				<input
 					type="text"
 					name={name}
 					value={inputValue}
 					disabled={disabled}
 					id={this.state.htmlID}
+					valid={valid}
 					onChange={this.onChangeWrapper}
+					size={size}
+					maxlength={maxlength}
 					/>
-				<label htmlFor={this.state.htmlID}>{label}</label>
 			</div>
 		);
 	}
@@ -49,6 +55,8 @@ ControlledTextInput.propTypes = {
 	disabled: PropTypes.bool,
 	valid: PropTypes.bool,
 	onChange: PropTypes.func,
+	size: PropTypes.string,
+	maxlength: PropTypes.string,
 };
 
 ControlledTextInput.defaultProps = {

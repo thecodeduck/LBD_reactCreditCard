@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thecodeduck/LBD_reactCreditCard#readme",
   "devDependencies": {
+    "autoprefixer": "^9.4.6",
     "babel-core": "^6.17.0",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^6.2.0",

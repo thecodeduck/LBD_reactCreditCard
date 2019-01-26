@@ -12,6 +12,7 @@ module.exports = {
 		'no-undef-init': ['warn'],
 		'no-empty': ['warn'],
 		'no-unused-vars': ['warn'],
+		'no-unknown-property': ['warn', { 'ignore': 'maxlength' }]
 		'no-param-reassign': ['warn'],
 		'no-plusplus': ['off'],
 		'no-tabs': ['off'],
