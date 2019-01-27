@@ -68,7 +68,7 @@ class StatelessCCForm extends React.Component {
 		const { onInputChange } = this;
 
 		return (
-			<div>
+			<form>
 				<TextInput
 					name="cardHolderName"
 					label="Card Holder Name"
@@ -112,7 +112,7 @@ class StatelessCCForm extends React.Component {
 					size="3"
 					maxlength="3"
 					/>
-			</div>
+			</form>
 		);
 	}
 }

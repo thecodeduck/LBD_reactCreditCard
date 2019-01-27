@@ -30,19 +30,22 @@ class ControlledTextInput extends React.Component {
 		} = this.props;
 
 		return (
-			<div>
-				<label htmlFor={this.state.htmlID}>{label}</label>
-				<input
-					type="text"
-					name={name}
-					value={inputValue}
-					disabled={disabled}
-					id={this.state.htmlID}
-					valid={valid}
-					onChange={this.onChangeWrapper}
-					size={size}
-					maxlength={maxlength}
-					/>
+			<div class="field">
+				<label class="label" htmlFor={this.state.htmlID}>{label}</label>
+				<div class="control">
+					<input
+						class="input"
+						type="text"
+						name={name}
+						value={inputValue}
+						disabled={disabled}
+						id={this.state.htmlID}
+						valid={valid}
+						onChange={this.onChangeWrapper}
+						size={size}
+						maxlength={maxlength}
+						/>
+				</div>
 			</div>
 		);
 	}

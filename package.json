@@ -4,7 +4,10 @@
   "description": "Learn by Doing - React Credit Card Component!",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot"
+    "dev": "webpack-dev-server --content-base src --inline --hot",
+		"css-build": "node-sass --omit-source-map-url src/_sass/styles.scss src/css/styles.css",
+		"css-watch": "npm run css-build -- --watch",
+		"start": "npm run css-watch"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
+    "bulma": "^0.7.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-import-resolver-node": "^0.3.2",
@@ -36,6 +40,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "node-sass": "^4.11.0",
     "webpack": "3.10.0",
     "webpack-cli": "2.0.10",
     "webpack-dev-server": "2.9.7"

@@ -13,7 +13,7 @@ setup:
 ## run - attempt run webpack-dev-server
 ##
 run:
-	npm run dev
+	pnpm run dev
 
 ##	tests - run all tests
 ##	test NAME=name - run single test, searches thru 'describe' suite
