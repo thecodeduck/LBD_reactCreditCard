@@ -17,10 +17,19 @@ module.exports = {
 					plugins: [ 'react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties' ],
 				},
 			},
+			{
+				test: /\.scss$/,
+				exclude: /(node_modules|bower_components)/,
+				loader: [
+					'style-loader',
+					'css-loader',
+					'sass-loader',
+				],
+			},
 		],
 	},
 	output: {
-		path: `${__dirname}/src/`,
+		path: `${__dirname}/build/`,
 		filename: 'client.min.js',
 	},
 	resolve: {

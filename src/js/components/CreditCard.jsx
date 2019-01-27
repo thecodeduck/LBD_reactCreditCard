@@ -69,49 +69,68 @@ class StatelessCCForm extends React.Component {
 
 		return (
 			<form>
-				<TextInput
-					name="cardHolderName"
-					label="Card Holder Name"
-					disabled={disabled}
-					inputValue={cardHolderName}
-					onChange={onInputChange}
-					/>
-				<TextInput
-					name="cardNumber"
-					label="Card Number"
-					disabled={disabled}
-					inputValue={cardNumber}
-					onChange={onInputChange}
-					/>
-				<TextInput
-					name="expMonth"
-					label="Exp. Month"
-					disabled={disabled}
-					inputValue={expMonth}
-					isInputValid={isValidExpMonth(expMonth)}
-					inputValidatorFunc={isValidExpMonth}
-					onChange={onInputChange}
-					size="2"
-					maxlength="2"
-					/>
-				<TextInput
-					name="expYear"
-					label="Exp. Year"
-					disabled={disabled}
-					inputValue={expYear}
-					onChange={onInputChange}
-					size="4"
-					maxlength="4"
-					/>
-				<TextInput
-					name="cvc"
-					label="CVC"
-					disabled={disabled}
-					inputValue={cvc}
-					onChange={onInputChange}
-					size="3"
-					maxlength="3"
-					/>
+				<div className="level">
+					<TextInput
+						name="cardNumber"
+						label="Card Number"
+						disabled={disabled}
+						inputValue={cardNumber}
+						onChange={onInputChange}
+						/>
+				</div>
+				<div className="level">
+					<TextInput
+						name="cardHolderName"
+						label="Name on Card"
+						disabled={disabled}
+						inputValue={cardHolderName}
+						onChange={onInputChange}
+						/>
+				</div>
+				<label className="label">Example</label>
+				<div className="field is-grouped">
+					<p className="control is-expanded has-icon">
+						<input className="input is-success" type="text" placeholder="Username" value="alexsmith" />
+					</p>
+					<p className="control is-expanded has-icon">
+						<input className="input is-warning" type="email" placeholder="Email" value="alex@smith.com" />
+					</p>
+				</div>
+
+						<div className="field is-grouped">
+							<label className="label">Expiration Date</label>
+							<div className="field-body mobile">
+								<TextInput
+									name="expMonth"
+									disabled={disabled}
+									inputValue={expMonth}
+									isInputValid={isValidExpMonth(expMonth)}
+									inputValidatorFunc={isValidExpMonth}
+									onChange={onInputChange}
+									ariaLabel="Card Expiration Month"
+									size="2"
+									maxlength="2"
+									/>
+								<TextInput
+									name="expYear"
+									disabled={disabled}
+									inputValue={expYear}
+									onChange={onInputChange}
+									ariaLabel="Card Expiration Year"
+									size="4"
+									maxlength="4"
+									/>
+							</div>
+						</div>
+						<TextInput
+							name="cvc"
+							label="CVC"
+							disabled={disabled}
+							inputValue={cvc}
+							onChange={onInputChange}
+							size="3"
+							maxlength="3"
+							/>
 			</form>
 		);
 	}

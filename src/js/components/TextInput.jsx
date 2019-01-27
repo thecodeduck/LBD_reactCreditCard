@@ -25,16 +25,17 @@ class ControlledTextInput extends React.Component {
 			disabled,
 			valid,
 			onChange,
+			ariaLabel,
 			size,
 			maxlength,
 		} = this.props;
 
 		return (
-			<div class="field">
-				<label class="label" htmlFor={this.state.htmlID}>{label}</label>
-				<div class="control">
+			<div className="field">
+				<label className="label" htmlFor={this.state.htmlID}>{label}</label>
+				<div className="control">
 					<input
-						class="input"
+						className="input"
 						type="text"
 						name={name}
 						value={inputValue}
@@ -42,8 +43,9 @@ class ControlledTextInput extends React.Component {
 						id={this.state.htmlID}
 						valid={valid}
 						onChange={this.onChangeWrapper}
+						aria-label={ariaLabel}
 						size={size}
-						maxlength={maxlength}
+						maxLength={maxlength}
 						/>
 				</div>
 			</div>
@@ -58,6 +60,7 @@ ControlledTextInput.propTypes = {
 	disabled: PropTypes.bool,
 	valid: PropTypes.bool,
 	onChange: PropTypes.func,
+	ariaLabel: PropTypes.string,
 	size: PropTypes.string,
 	maxlength: PropTypes.string,
 };
