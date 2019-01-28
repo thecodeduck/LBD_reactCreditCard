@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from './TextInput';
+import { ControlledTextInput, ControlledTextInputLabeled } from './TextInput';
 
 const isValidCardNumber = (number) => /^\d{4}\s*\d{4}\s*\d{4}\s*\d{4}$/.test(number);
 
@@ -70,7 +70,7 @@ class StatelessCCForm extends React.Component {
 		return (
 			<form>
 				<div className="level">
-					<TextInput
+					<ControlledTextInputLabeled
 						name="cardNumber"
 						label="Card Number"
 						disabled={disabled}
@@ -79,7 +79,7 @@ class StatelessCCForm extends React.Component {
 						/>
 				</div>
 				<div className="level">
-					<TextInput
+					<ControlledTextInputLabeled
 						name="cardHolderName"
 						label="Name on Card"
 						disabled={disabled}
@@ -87,50 +87,42 @@ class StatelessCCForm extends React.Component {
 						onChange={onInputChange}
 						/>
 				</div>
-				<label className="label">Example</label>
-				<div className="field is-grouped">
-					<p className="control is-expanded has-icon">
-						<input className="input is-success" type="text" placeholder="Username" value="alexsmith" />
-					</p>
-					<p className="control is-expanded has-icon">
-						<input className="input is-warning" type="email" placeholder="Email" value="alex@smith.com" />
-					</p>
-				</div>
-
-						<div className="field is-grouped">
-							<label className="label">Expiration Date</label>
-							<div className="field-body mobile">
-								<TextInput
+				<div className="level is-mobile">
+						<div className="field">
+							<label htmlFor="expDate" className="label">Expiration Date</label>
+							<div className="field is-grouped" id="expDate">
+								<ControlledTextInput
 									name="expMonth"
 									disabled={disabled}
 									inputValue={expMonth}
-									isInputValid={isValidExpMonth(expMonth)}
+									isInputValid={isValidExpMonth(this.inputValue)}
 									inputValidatorFunc={isValidExpMonth}
 									onChange={onInputChange}
 									ariaLabel="Card Expiration Month"
 									size="2"
-									maxlength="2"
+									maxLength="2"
 									/>
-								<TextInput
+								<ControlledTextInput
 									name="expYear"
 									disabled={disabled}
 									inputValue={expYear}
 									onChange={onInputChange}
 									ariaLabel="Card Expiration Year"
 									size="4"
-									maxlength="4"
+									maxLength="4"
 									/>
 							</div>
 						</div>
-						<TextInput
+						<ControlledTextInputLabeled
 							name="cvc"
 							label="CVC"
 							disabled={disabled}
 							inputValue={cvc}
 							onChange={onInputChange}
 							size="3"
-							maxlength="3"
+							maxLength="3"
 							/>
+				</div>
 			</form>
 		);
 	}
