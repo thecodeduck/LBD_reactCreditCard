@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ControlledTextInput, ControlledTextInputLabeled } from './TextInput';
+import Select from './SelectInput';
 
 const isValidCardNumber = (number) => /^\d{4}\s*\d{4}\s*\d{4}\s*\d{4}$/.test(number);
 
@@ -63,19 +64,27 @@ class StatelessCCForm extends React.Component {
 	}
 
 	render() {
-		const { inputValue, disabled } = this.props;
+		const { inputValue, disabled, validator } = this.props;
 		const { cardNumber, expMonth, expYear, cvc, cardHolderName } = inputValue;
 		const { onInputChange } = this;
 
+		const isInputValid = validator(inputValue);
+
 		return (
 			<form>
+				<Select
+					name="test"
+					options={[ 'a', 'b', 'c' ]}
+					/>
 				<div className="level">
+					{ isInputValid ? 'VALID!' : '' }
 					<ControlledTextInputLabeled
 						name="cardNumber"
 						label="Card Number"
 						disabled={disabled}
 						inputValue={cardNumber}
 						onChange={onInputChange}
+						required={true}
 						/>
 				</div>
 				<div className="level">
@@ -84,7 +93,9 @@ class StatelessCCForm extends React.Component {
 						label="Name on Card"
 						disabled={disabled}
 						inputValue={cardHolderName}
+						isInputValid={console.log(this.name)}
 						onChange={onInputChange}
+						required={true}
 						/>
 				</div>
 				<div className="level is-mobile">
@@ -96,11 +107,11 @@ class StatelessCCForm extends React.Component {
 									disabled={disabled}
 									inputValue={expMonth}
 									isInputValid={isValidExpMonth(this.inputValue)}
-									inputValidatorFunc={isValidExpMonth}
 									onChange={onInputChange}
 									ariaLabel="Card Expiration Month"
 									size="2"
 									maxLength="2"
+									required={true}
 									/>
 								<ControlledTextInput
 									name="expYear"
@@ -110,6 +121,7 @@ class StatelessCCForm extends React.Component {
 									ariaLabel="Card Expiration Year"
 									size="4"
 									maxLength="4"
+									required={true}
 									/>
 							</div>
 						</div>
@@ -121,6 +133,7 @@ class StatelessCCForm extends React.Component {
 							onChange={onInputChange}
 							size="3"
 							maxLength="3"
+							required={true}
 							/>
 				</div>
 			</form>
@@ -136,6 +149,7 @@ StatelessCCForm.propTypes = {
 		cvc: PropTypes.string,
 		cardHolderName: PropTypes.string,
 	}),
+	validator: PropTypes.func,
 	disabled: PropTypes.bool,
 	onChange: PropTypes.func,
 };
@@ -146,6 +160,7 @@ StatelessCCForm.defaultProps = {
 	onChange: (...args) => {
 		console.log('StatelessCCForm.defaultProps.onChange ', args);
 	},
+	validator: isValidCard,
 };
 
 class StatefulCCForm extends React.Component {

@@ -31,6 +31,7 @@ class ControlledTextInput extends React.Component {
 			size,
 			minLength,
 			maxLength,
+			required,
 		} = this.props;
 
 		return (
@@ -48,6 +49,7 @@ class ControlledTextInput extends React.Component {
 					size={size}
 					minLength={minLength}
 					maxLength={maxLength}
+					required={required}
 					/>
 			</div>
 		);
@@ -67,6 +69,7 @@ ControlledTextInput.propTypes = {
 	size: PropTypes.string,
 	minLength: PropTypes.string,
 	maxLength: PropTypes.string,
+	required: PropTypes.bool,
 };
 
 ControlledTextInput.defaultProps = {
@@ -99,42 +102,17 @@ class ControlledTextInputLabeled extends React.Component {
 			label,
 			fieldClass,
 			labelClass,
-			name,
-			controlClass,
-			inputClass,
-			inputValue,
 			htmlID,
-			disabled,
-			valid,
-			onChange,
-			ariaLabel,
-			size,
-			minLength,
-			maxLength,
+			...rest
 		} = this.props;
-
 
 		return (
 			<div className={fieldClass ? `field ${fieldClass}` : 'field'}>
 				<label className={labelClass ? `label ${labelClass}` : 'label'} htmlFor={htmlID || this.state.htmlID}>{label}</label>
-				<div className="control">
-					<div className={`control ${controlClass}`}>
-						<input
-							className={inputClass ? `input ${inputClass}` : 'input'}
-							type="text"
-							name={name}
-							value={inputValue}
-							disabled={disabled}
-							id={htmlID || this.state.htmlID}
-							valid={valid}
-							onChange={this.onChangeWrapper}
-							aria-label={ariaLabel}
-							size={size}
-							minLength={minLength}
-							maxLength={maxLength}
-							/>
-					</div>
-				</div>
+				<ControlledTextInput
+					htmlID={this.state.htmlID}
+					{...rest}
+					/>
 			</div>
 		);
 	}
@@ -144,18 +122,7 @@ ControlledTextInputLabeled.propTypes = {
 	fieldClass: PropTypes.string,
 	labelClass: PropTypes.string,
 	label: PropTypes.string,
-	name: PropTypes.string,
-	controlClass: PropTypes.string,
-	inputClass: PropTypes.string,
-	inputValue: PropTypes.string,
-	disabled: PropTypes.bool,
 	htmlID: PropTypes.string,
-	valid: PropTypes.bool,
-	onChange: PropTypes.func,
-	ariaLabel: PropTypes.string,
-	size: PropTypes.string,
-	minLength: PropTypes.string,
-	maxLength: PropTypes.string,
 };
 
 ControlledTextInputLabeled.defaultProps = {
