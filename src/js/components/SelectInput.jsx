@@ -17,10 +17,10 @@ class ControlledSelectInput extends React.Component {
 		onChange(evt.target.value, evt.target.name);
 	}
 
-	renderOptions(opt, i) {
+	renderOptions(opt) {
 		return (
 			<React.Fragment>
-				<option>opt[i]</option>
+				<option>opt</option>
 			</React.Fragment>
 		);
 	}

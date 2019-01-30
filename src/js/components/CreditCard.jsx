@@ -70,12 +70,17 @@ class StatelessCCForm extends React.Component {
 
 		const isInputValid = validator(inputValue);
 
+		function getYear() {
+			const arr = [];
+			arr.push(new Date().getFullYear());
+			while (arr.length < 21) {
+				arr.push(arr[arr.length - 1] + 1);
+			}
+			return arr;
+		}
+
 		return (
 			<form>
-				<Select
-					name="test"
-					options={[ 'a', 'b', 'c' ]}
-					/>
 				<div className="level">
 					{ isInputValid ? 'VALID!' : '' }
 					<ControlledTextInputLabeled
@@ -102,27 +107,25 @@ class StatelessCCForm extends React.Component {
 						<div className="field">
 							<label htmlFor="expDate" className="label">Expiration Date</label>
 							<div className="field is-grouped" id="expDate">
-								<ControlledTextInput
+								<Select
 									name="expMonth"
 									disabled={disabled}
 									inputValue={expMonth}
 									isInputValid={isValidExpMonth(this.inputValue)}
 									onChange={onInputChange}
 									ariaLabel="Card Expiration Month"
-									size="2"
-									maxLength="2"
 									required={true}
+									options={[ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ]}
 									/>
-								<ControlledTextInput
-									name="expYear"
-									disabled={disabled}
-									inputValue={expYear}
-									onChange={onInputChange}
-									ariaLabel="Card Expiration Year"
-									size="4"
-									maxLength="4"
-									required={true}
-									/>
+									<Select
+										name="expYear"
+										disabled={disabled}
+										inputValue={expYear}
+										onChange={onInputChange}
+										ariaLabel="Card Expiration Year"
+										required={true}
+										options={getYear()}
+										/>
 							</div>
 						</div>
 						<ControlledTextInputLabeled
@@ -155,7 +158,13 @@ StatelessCCForm.propTypes = {
 };
 
 StatelessCCForm.defaultProps = {
-	inputValue: {},
+	inputValue: {
+		cardNumber: undefined,
+		expMonth: '01',
+		expYear: '2019',
+		cvc: undefined,
+		cardHolderName: undefined,
+	},
 	disabled: false,
 	onChange: (...args) => {
 		console.log('StatelessCCForm.defaultProps.onChange ', args);
