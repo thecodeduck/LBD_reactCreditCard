@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ControlledTextInput, ControlledTextInputLabeled } from './TextInput';
 import Select from './SelectInput';
+import Checkbox from './Checkbox';
 
 const isValidCardNumber = (number) => /^\d{4}\s*\d{4}\s*\d{4}\s*\d{4}$/.test(number);
 
@@ -139,6 +140,7 @@ class StatelessCCForm extends React.Component {
 							required={true}
 							/>
 				</div>
+				<Checkbox />
 			</form>
 		);
 	}
